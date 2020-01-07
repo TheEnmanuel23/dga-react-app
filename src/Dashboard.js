@@ -1,14 +1,7 @@
 import React from "react";
 import { Link, Switch, Route } from "react-router-dom";
+import Page from "./Page";
 import "./Dashboard.css";
-
-const Page = ({ children, className, ...rest }) => {
-  return (
-    <div className={`layout-page ${className}`} {...rest}>
-      {children}
-    </div>
-  );
-};
 
 export default () => {
   return (
