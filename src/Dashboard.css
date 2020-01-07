@@ -1,0 +1,35 @@
+.dashboard {
+  display: flex;
+  height: 600px;
+}
+
+.dashboard-nav {
+  width: 15%;
+  background-color: #2fa278;
+}
+
+.dashboard-nav ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.dashboard-nav ul li {
+  height: 50px;
+}
+
+.dashboard-nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.dashboard-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.dashboard-page-d a {
+  color: white;
+}
