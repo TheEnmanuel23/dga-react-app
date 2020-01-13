@@ -1,5 +1,5 @@
 import React from "react";
-import "./Page.css";
+import "./styles.css";
 
 export default ({ children, className, ...rest }) => {
   return (

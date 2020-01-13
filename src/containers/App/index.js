@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Layout from "./Layout";
-import Dashboard from "./Dashboard";
-import "./App.css";
+import Layout from "../Layout";
+import Dashboard from "../Dashboard";
+import "./styles.css";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Link, Route } from "react-router-dom";
-import Page from "./Page";
-import "./Layout.css";
+import Page from "../../components/Page";
+import "./styles.css";
 
 export default () => {
   return (
