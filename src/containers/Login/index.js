@@ -1,7 +1,10 @@
 import React from "react";
 import { Formik } from "formik";
+import { useHistory } from "react-router-dom";
 
 export default () => {
+  let history = useHistory();
+
   return (
     <div>
       <h3>Login</h3>
@@ -13,6 +16,7 @@ export default () => {
         onSubmit={values => {
           localStorage.setItem("email", values.email);
           localStorage.setItem("password", values.password);
+          history.push("/layout");
         }}
         validate={values => {
           const errors = {};
