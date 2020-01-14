@@ -1,21 +1,15 @@
 // @vendors
-import React from "react";
+import React, { useContext } from "react";
 import { Switch, Link, Route } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 // @components
 import Page from "../../components/Page";
-// @utilities
-import validateSession from "../../utilities/validateSession";
+import { AuthContext } from "../App";
 import "./styles.css";
-
-const logout = () => {
-  localStorage.setItem("email", "");
-  localStorage.setItem("password", "");
-};
 
 export default () => {
   const history = useHistory();
-  const isAuthenticated = validateSession();
+  const authContext = useContext(AuthContext);
 
   return (
     <div className="layout">
@@ -30,15 +24,14 @@ export default () => {
           <li>
             <Link to="/layout/page-b">Page B</Link>
           </li>
-          {!isAuthenticated ? (
+          {!authContext.isAuthenticated ? (
             <li>
               <Link to="/login">Iniciar sesión</Link>
             </li>
           ) : (
             <button
               onClick={() => {
-                logout();
-                history.push("/login");
+                authContext.logout(() => history.push("/layout"));
               }}
             >
               Cerrar Sesión

@@ -1,15 +1,12 @@
 // @vendors
-import React from "react";
+import React, { useContext } from "react";
 import { Formik } from "formik";
-import { useHistory, Redirect } from "react-router-dom";
-// @utilities
-import validateSession from "../../utilities/validateSession";
+import { useHistory } from "react-router-dom";
+import { AuthContext } from "../App";
 
 export default () => {
   let history = useHistory();
-  const isAuthenticated = validateSession();
-
-  if (isAuthenticated) return <Redirect to="/layout" />;
+  const authContext = useContext(AuthContext);
 
   return (
     <div>
@@ -20,9 +17,7 @@ export default () => {
           password: ""
         }}
         onSubmit={values => {
-          localStorage.setItem("email", values.email);
-          localStorage.setItem("password", values.password);
-          history.push("/layout");
+          authContext.login(values, () => history.push("/layout"));
         }}
         validate={values => {
           const errors = {};
