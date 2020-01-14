@@ -1,14 +1,9 @@
 import React from "react";
 import { Switch, Link, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Page from "../../components/Page";
+import validateSession from "../../utilities/validateSession";
 import "./styles.css";
-
-const validateSession = () => {
-  const email = localStorage.getItem("email");
-  const password = localStorage.getItem("password");
-
-  return email && password;
-};
 
 const logout = () => {
   localStorage.setItem("email", "");
@@ -16,6 +11,7 @@ const logout = () => {
 };
 
 export default () => {
+  const history = useHistory();
   const session = validateSession();
 
   return (
@@ -39,6 +35,7 @@ export default () => {
             <button
               onClick={() => {
                 logout();
+                history.push("/login");
               }}
             >
               Cerrar Sesión
