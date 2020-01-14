@@ -8,11 +8,11 @@ import { AuthProvider } from "./utilities/auth";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <AuthProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <AuthProvider>
       <App />
-    </BrowserRouter>
-  </AuthProvider>,
+    </AuthProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 
