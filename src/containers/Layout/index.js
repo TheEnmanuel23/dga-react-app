@@ -4,12 +4,13 @@ import { Switch, Link, Route } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 // @components
 import Page from "../../components/Page";
-import { AuthContext } from "../App";
+// @utilities
+import { useAuth } from "../../utilities/auth";
 import "./styles.css";
 
 export default () => {
   const history = useHistory();
-  const authContext = useContext(AuthContext);
+  const auth = useAuth();
 
   return (
     <div className="layout">
@@ -24,14 +25,14 @@ export default () => {
           <li>
             <Link to="/layout/page-b">Page B</Link>
           </li>
-          {!authContext.isAuthenticated ? (
+          {!auth.isAuthenticated ? (
             <li>
               <Link to="/login">Iniciar sesión</Link>
             </li>
           ) : (
             <button
               onClick={() => {
-                authContext.logout(() => history.push("/layout"));
+                auth.logout(() => history.push("/layout"));
               }}
             >
               Cerrar Sesión

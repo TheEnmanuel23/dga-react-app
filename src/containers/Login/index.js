@@ -2,11 +2,12 @@
 import React, { useContext } from "react";
 import { Formik } from "formik";
 import { useHistory } from "react-router-dom";
-import { AuthContext } from "../App";
+// @utilities
+import { useAuth } from "../../utilities/auth";
 
 export default () => {
   let history = useHistory();
-  const authContext = useContext(AuthContext);
+  const auth = useAuth();
 
   return (
     <div>
@@ -17,7 +18,7 @@ export default () => {
           password: ""
         }}
         onSubmit={values => {
-          authContext.login(values, () => history.push("/layout"));
+          auth.login(values, () => history.push("/layout"));
         }}
         validate={values => {
           const errors = {};
