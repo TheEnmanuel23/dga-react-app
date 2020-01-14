@@ -17,6 +17,9 @@ export default () => {
           <li>
             <Link to="/layout/page-b">Page B</Link>
           </li>
+          <li>
+            <Link to="/login">Iniciar sesión</Link>
+          </li>
         </ul>
       </nav>
       <div className="layout-content">
