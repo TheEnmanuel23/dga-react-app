@@ -11,7 +11,8 @@ export default () => {
           password: ""
         }}
         onSubmit={values => {
-          console.log(values);
+          localStorage.setItem("email", values.email);
+          localStorage.setItem("password", values.password);
         }}
         validate={values => {
           const errors = {};
@@ -49,7 +50,7 @@ export default () => {
                 value={values.password}
                 onChange={handleChange}
               />
-              {errors.email && <div>{errors.email}</div>}
+              {errors.password && <div>{errors.password}</div>}
             </div>
             <input type="submit" value="Iniciar sesión" />
           </form>
