@@ -3,7 +3,21 @@ import { Switch, Link, Route } from "react-router-dom";
 import Page from "../../components/Page";
 import "./styles.css";
 
+const validateSession = () => {
+  const email = localStorage.getItem("email");
+  const password = localStorage.getItem("password");
+
+  return email && password;
+};
+
+const logout = () => {
+  localStorage.setItem("email", "");
+  localStorage.setItem("password", "");
+};
+
 export default () => {
+  const session = validateSession();
+
   return (
     <div className="layout">
       <nav className="layout-nav">
@@ -17,9 +31,19 @@ export default () => {
           <li>
             <Link to="/layout/page-b">Page B</Link>
           </li>
-          <li>
-            <Link to="/login">Iniciar sesión</Link>
-          </li>
+          {!session ? (
+            <li>
+              <Link to="/login">Iniciar sesión</Link>
+            </li>
+          ) : (
+            <button
+              onClick={() => {
+                logout();
+              }}
+            >
+              Cerrar Sesión
+            </button>
+          )}
         </ul>
       </nav>
       <div className="layout-content">
