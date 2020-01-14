@@ -7,6 +7,7 @@ import Dashboard from "../Dashboard";
 import Login from "../Login";
 // @utilities
 import { useAuth } from "../../utilities/auth";
+import ProtectedRouter from "../../utilities/ProtectedRouter";
 import "./styles.css";
 
 function App() {
@@ -15,11 +16,9 @@ function App() {
   return (
     <Switch>
       <Route path="/layout" component={Layout} />
-      <Route path="/dashboard">
-        {() =>
-          auth.isAuthenticated ? <Dashboard /> : <Redirect to="/login" />
-        }
-      </Route>
+      <ProtectedRouter path="/dashboard">
+        <Dashboard />
+      </ProtectedRouter>
       <Route
         path="/login"
         render={props =>
