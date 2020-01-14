@@ -1,7 +1,10 @@
+// @vendors
 import React from "react";
 import { Switch, Link, Route } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+// @components
 import Page from "../../components/Page";
+// @utilities
 import validateSession from "../../utilities/validateSession";
 import "./styles.css";
 
@@ -12,7 +15,7 @@ const logout = () => {
 
 export default () => {
   const history = useHistory();
-  const session = validateSession();
+  const isAuthenticated = validateSession();
 
   return (
     <div className="layout">
@@ -27,7 +30,7 @@ export default () => {
           <li>
             <Link to="/layout/page-b">Page B</Link>
           </li>
-          {!session ? (
+          {!isAuthenticated ? (
             <li>
               <Link to="/login">Iniciar sesión</Link>
             </li>

@@ -1,4 +1,4 @@
-const validateSession = () => {
+export default () => {
   const email = localStorage.getItem("email");
   const password = localStorage.getItem("password");
 

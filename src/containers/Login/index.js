@@ -1,9 +1,15 @@
+// @vendors
 import React from "react";
 import { Formik } from "formik";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
+// @utilities
+import validateSession from "../../utilities/validateSession";
 
 export default () => {
   let history = useHistory();
+  const isAuthenticated = validateSession();
+
+  if (isAuthenticated) return <Redirect to="/layout" />;
 
   return (
     <div>
