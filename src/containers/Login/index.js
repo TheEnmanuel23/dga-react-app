@@ -5,14 +5,15 @@ import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 // @utilities
 import { useAuth } from "../../utilities/auth";
-import "./styles.css";
+// @styles
+import { Wrapper } from "./styles";
 
 export default () => {
   let history = useHistory();
   const auth = useAuth();
 
   return (
-    <div className="login-form">
+    <Wrapper>
       <h3>Login</h3>
       <Formik
         initialValues={{
@@ -68,6 +69,6 @@ export default () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </Wrapper>
   );
 };
