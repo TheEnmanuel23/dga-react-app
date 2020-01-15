@@ -1,5 +1,6 @@
 import React, { useContext, useState, createContext } from "react";
-import validateSession from './validateSession'
+import axios from "axios";
+import validateSession from "./validateSession";
 
 const Context = createContext({});
 
@@ -16,10 +17,17 @@ const clearSession = () => {
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!validateSession());
 
-  const login = (user, callback) => {
-    saveSession(user);
-    setIsAuthenticated(true);
-    callback();
+  const login = async (user, callback) => {
+    const res = await axios.post(
+      "https://login-test-dga.herokuapp.com/login",
+      user
+    );
+
+    if (res.data.response) {
+      saveSession(user);
+      setIsAuthenticated(true);
+      callback();
+    }
   };
 
   const logout = callback => {
