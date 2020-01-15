@@ -1,16 +1,18 @@
 // @vendors
-import React, { useContext } from "react";
+import React from "react";
 import { Formik } from "formik";
 import { useHistory } from "react-router-dom";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 // @utilities
 import { useAuth } from "../../utilities/auth";
+import "./styles.css";
 
 export default () => {
   let history = useHistory();
   const auth = useAuth();
 
   return (
-    <div>
+    <div className="login-form">
       <h3>Login</h3>
       <Formik
         initialValues={{
@@ -35,31 +37,35 @@ export default () => {
         }}
       >
         {({ values, handleSubmit, handleChange, errors }) => (
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
+          <Form onSubmit={handleSubmit}>
+            <FormGroup>
+              <Label htmlFor="email">Email</Label>
+              <Input
                 type="email"
                 name="email"
+                id="email"
                 value={values.email}
                 onChange={handleChange}
               />
-              {errors.email && <div>{errors.email}</div>}
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
+              {errors.email && (
+                <FormText color="danger">{errors.email}</FormText>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label htmlFor="password">Password</Label>
+              <Input
                 type="password"
                 name="password"
+                id="password"
                 value={values.password}
                 onChange={handleChange}
               />
-              {errors.password && <div>{errors.password}</div>}
-            </div>
-            <input type="submit" value="Iniciar sesión" />
-          </form>
+              {errors.password && (
+                <FormText color="danger">{errors.password}</FormText>
+              )}
+            </FormGroup>
+            <Button color="primary">Iniciar sesión</Button>
+          </Form>
         )}
       </Formik>
     </div>

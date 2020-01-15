@@ -6,6 +6,7 @@ import App from "./containers/App";
 // @utilities
 import { AuthProvider } from "./utilities/auth";
 import * as serviceWorker from "./serviceWorker";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <BrowserRouter>
